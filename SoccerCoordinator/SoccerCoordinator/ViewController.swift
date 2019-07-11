@@ -15,13 +15,16 @@ class ViewController: UIViewController {
     var teamSharks: [[ String : String ]] = []
     var teamRaptors: [[ String : String ]] = []
     var teamDragons: [[ String : String ]] = []
-    var letters: [String] = []
+    var allLetters: [String] = []
+  
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sortPlayers()
         writeLetter(forTeam: teamSharks)
+        writeLetter(forTeam: teamDragons)
+        writeLetter(forTeam: teamRaptors)
     }
     
     var players: [[ String : String ]] =  [
@@ -81,18 +84,17 @@ class ViewController: UIViewController {
      */
     
     func writeLetter(forTeam team: [[ String : String ]] ){
-        var letter = ""
+        var letters: [String] = []
         let sharksPracticeTime = "March 17, 3pm"
         let raptorsPracticeTime = "March 17, 3pm"
         let dragonsPracticeTime = "March 17, 3pm"
-        
         
         switch team {
         case teamSharks:
             for player in teamSharks {
                 guard let playerName = player["name"], let guardians = player["Guardian Names"] else { return }
                 
-                letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team sharks and your practice is on \(sharksPracticeTime).\n"
+                let letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team sharks and your practice is on \(sharksPracticeTime).\n"
                 letters.append(letter)
                 print(letter)
             }
@@ -101,7 +103,7 @@ class ViewController: UIViewController {
             for player in teamRaptors {
                 guard let playerName = player["name"], let guardians = player["Guardian Names"] else { return }
                 
-                letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team raptors and your practice is on \(raptorsPracticeTime).\n"
+                let letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team raptors and your practice is on \(raptorsPracticeTime).\n"
                 letters.append(letter)
                 print(letter)
             }
@@ -110,7 +112,7 @@ class ViewController: UIViewController {
             for player in teamDragons {
                 guard let playerName = player["name"], let guardians = player["Guardian Names"] else { return }
                 
-                letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team dragon and your practice is on \(dragonsPracticeTime).\n"
+                let letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team dragon and your practice is on \(dragonsPracticeTime).\n"
                 
                 letters.append(letter)
                 print(letter)
