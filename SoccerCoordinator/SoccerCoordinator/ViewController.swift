@@ -20,10 +20,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         sortPlayers()
-        writeLetter(forTeam: teamDragons)
-        print(letters)
+        writeLetter(forTeam: teamSharks)
     }
     
     var players: [[ String : String ]] =  [
@@ -51,16 +49,12 @@ class ViewController: UIViewController {
     func sortPlayers(){
         for player in players {
             if player["experience"] == "NO" {
-                print(player["name"])
                 if teamSharks.count < 3 {
                     teamSharks.append(player)
-                    print("TEAMsharks \(teamSharks.count)")
                 } else if teamRaptors.count < 3 {
                     teamRaptors.append(player)
-                    print("TEAMRAPTORS \(teamRaptors.count)")
                 } else {
                     teamDragons.append(player)
-                    print("TEAMDRAGONS \(teamDragons.count)")
                 }
             }
         }
@@ -68,16 +62,12 @@ class ViewController: UIViewController {
         let counter = 6
         for player in players {
             if player["experience"] == "YES" {
-                print(player["name"])
                 if teamSharks.count < counter {
                     teamSharks.append(player)
-                    print("TEAMsharks \(teamSharks.count)")
                 } else if teamRaptors.count < counter {
                     teamRaptors.append(player)
-                    print("TEAMRAPTORS \(teamRaptors.count)")
                 } else {
                     teamDragons.append(player)
-                    print("TEAMDRAGONS \(teamDragons.count)")
                 }
             }
         }
@@ -102,26 +92,27 @@ class ViewController: UIViewController {
             for player in teamSharks {
                 guard let playerName = player["name"], let guardians = player["Guardian Names"] else { return }
                 
-                letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team sharks and your practice is on \(sharksPracticeTime)"
+                letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team sharks and your practice is on \(sharksPracticeTime).\n"
                 letters.append(letter)
+                print(letter)
             }
             
         case teamRaptors:
             for player in teamRaptors {
                 guard let playerName = player["name"], let guardians = player["Guardian Names"] else { return }
                 
-                letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team raptors and your practice is on \(raptorsPracticeTime)"
+                letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team raptors and your practice is on \(raptorsPracticeTime).\n"
                 letters.append(letter)
+                print(letter)
             }
             
         case teamDragons:
             for player in teamDragons {
                 guard let playerName = player["name"], let guardians = player["Guardian Names"] else { return }
                 
-                letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team dragon and your practice is on \(dragonsPracticeTime)"
+                letter = "Dear \(playerName) we would like to inform you and your guardians: \(guardians) know that you have been selected to play on the team dragon and your practice is on \(dragonsPracticeTime).\n"
                 
                 letters.append(letter)
-                print(letters.count)
                 print(letter)
             }
             
